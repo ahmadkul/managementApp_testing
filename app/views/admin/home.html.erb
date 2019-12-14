@@ -1,0 +1,24 @@
+<div class="divs">
+  <label class="div_header"> Users currently registered in the system: </label> <hr/>
+
+  <% if !User.where(:role => "user").any?%>
+      <label class="div_header"> No users to display </label>
+  <% end %>
+
+<ol id = "users" >
+  <% User.all.each do |c| %>
+      <% if c.role == 'user' %>
+          <li><%= c.fName + " " + c.lName + " => "%>
+            <%= link_to "View", :action => 'view', :controller => 'vehicle', :id => c.id %>
+            <%= link_to "Edit", :action => 'edit_user', :id => c.id %>
+            <%= link_to "Delete", :action => 'delete', :id => c.id %>
+          </li>
+      <%end %>
+  <% end %>
+</ol> <hr/>
+
+  <div class="actions">
+  <%= button_to 'Modify my info', edit_user_registration_path, :method => :get %>
+  </div>
+</div>
+

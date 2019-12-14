@@ -1,0 +1,42 @@
+<%= form_for @user, :url =>{:action => "update", :id =>@user} do |f| %>
+
+    <div class="divs">
+      <% if @user.errors.any? %>
+          <h2><%= @user.errors.count %> errors prohibited this User from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+      <% end %> <hr>
+
+      <label class="div_header"> Editing user information </label> <hr/>
+
+      <%= f.label "First_Name" %><br/>
+      <%= f.text_field :fName %> <br/>
+
+      <%= f.label "Last_Name" %><br/>
+      <%= f.text_field :lName %><br/>
+
+      <%= f.label "Address" %><br/>
+      <%= f.text_field :address%><br/>
+
+      <%= f.label "City" %><br/>
+      <%= f.text_field :city%><br/>
+
+      <%= f.label "Province" %><br/>
+      <%= select(:user, :province, [['ON', 'ON'],['QC', 'QC'], ['AB','AB'], ['NB','NB'], ['NS','NS'], ['NT','NT'],
+                                    ['MB','MB'], ['BC','BC'], ['PE','PE'], ['SK','SK'] ,['NL','NL'] ,['NU','NU'],
+                                    ['YT','YT']]) %> <br>
+
+      <%= f.label "Postal Code" %><br/>
+      <%= f.text_field :pCode%><br/>
+
+      <%= f.label "Telphone" %><br/>
+      <%= f.telephone_field :telephone%><br/> <hr>
+
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    </div>
+<% end %>

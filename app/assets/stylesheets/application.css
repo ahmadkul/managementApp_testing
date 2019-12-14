@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+    font-family: Helvetica, Geneva, Arial, sans-serif;
+    font-size: small;
+}
+
+a:link, a:active, a:visited {
+    color: #CD0000;
+}
+
+h1 {
+    text-align: center;
+    font-family: Helvetica, Geneva, Arial, sans-serif;
+}
+
+.divs {
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+
+    background-color: #c9ccc4;
+    border-radius: 25px;
+    padding: 20px;
+    font-size:1.5em;
+    font-family: Monaco, "Andale Mono";
+    border: solid;
+    border-color: black;
+}
+
+.signing {
+    display: inline;
+    font-size: large;
+    border: solid;
+    border-color: grey;
+    background-color: lightgray;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+#alerts_messages {
+    display: inline;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    color: darkred;
+}
+
+.actions {
+    text-align: center;
+}
+
+.error {
+    background-color: #c9ccc4;
+    border-color: black;
+    border: solid;
+    float: left;
+    font-size: medium;
+    margin-left: 5%;
+    margin-top: 12%;
+    padding: 10px;
+}
+
+.div_header {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: #730E15;
+}

@@ -1,0 +1,61 @@
+<div class ='divs'>
+  <%= devise_error_messages! %> <hr>
+  <label class="div_header">Sign up</label> <hr>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <hr/>
+
+      <div class="TextFields">
+        <%= f.label "Role" %> <br>
+        <%= select(:user, :role, [['User', 'user'], ['Admin', 'admin']]) %> <br>
+
+        <%= f.label "First_Name" %><br/>
+        <%= f.text_field :fName%> <br/>
+
+        <%= f.label "Last_Name" %><br/>
+        <%= f.text_field :lName%><br/>
+
+        <%= f.label "Address" %><br/>
+        <%= f.text_field :address%><br/>
+
+        <%= f.label "City" %><br/>
+        <%= f.text_field :city%><br/>
+
+        <%= f.label "Province" %><br/>
+        <%= select(:user, :province, [['ON', 'ON'],['QC', 'QC'], ['AB','AB'], ['NB','NB'], ['NS','NS'], ['NT','NT'],
+                                      ['MB','MB'], ['BC','BC'], ['PE','PE'], ['SK','SK'] ,['NL','NL'] ,['NU','NU'],
+                                      ['YT','YT']]) %> <br>
+
+        <%= f.label "Postal Code" %><br/>
+        <%= f.text_field :pCode %><br/>
+
+        <%= f.label "Telphone" %><br/>
+        <%= f.telephone_field :telephone%><br/>
+      </div> <hr>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+  <% end %>
+  <%= render "users/shared/links" %>
+</div>
+
+

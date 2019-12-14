@@ -1,0 +1,39 @@
+<div class="divs">
+  <label class="div_header"> <%= User.find(@user_id).fName + "'s vehicles: "  %> </label> <hr/>
+
+  <ol id = "vehicles">
+    <% @count = 0%>
+    <% if !Vehicle.where(user_id: Integer(@user_id)).any?%>
+        <label class="div_header"> No vehicles to display </label>
+    <% end %>
+
+    <% Vehicle.all.each do |c| %>
+        <% if c.user_id == Integer(@user_id) %>
+            <% @count = @count + 1 %>
+            <li> <%= c.make %> <%= link_to "Edit", :action => "edit", :id => c.id %>
+              <%= link_to "Delete", :action => "delete", :id => c.id, :user_id => @user_id %>
+              <%= "[#{c.paid}]" %>
+              <% if c.paid != "Paid" %>
+                  <%= button_to 'Pay', {:action => 'pay', :id => c.id, :user_id => c.user_id},
+                                form: {style: 'display: inline;'}%>
+              <% end %>
+            </li>
+        <% end %>
+    <% end %>
+  </ol>
+
+  <hr>
+
+  <div class="actions">
+    <% if @count < 2 && current_user.role == 'user' %>
+        <%= button_to 'Create new vehicle', {:action => 'new', :id => @user_id} ,:method => :get %>
+    <% end %>
+
+    <% if current_user.role == 'user'%>
+        <%= button_to 'Modify my info', edit_user_registration_path, :method => :get %>
+
+    <%else %>
+        <%= button_to 'Back', {:action => 'home', :controller => 'admin' }, :method => :get%>
+        </div>
+    <%end %>
+    </div>

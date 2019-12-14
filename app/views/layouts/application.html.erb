@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ManagementApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div>
+  <% if !user_signed_in? %>
+      <div class="signing">
+        <%= link_to "sign in", new_user_session_path %>
+      </div>
+      <div class="signing">
+        <%= link_to "sign up", new_user_registration_path %>
+      </div>
+  <% else %>
+      <div class="signing">
+        <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+      </div>
+  <% end %>
+</div>
+
+<div id="alerts_messages">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
